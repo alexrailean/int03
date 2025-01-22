@@ -2,7 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico." />
+    <link rel="icon" href="./src/assets/favicon.ico"/>
+    <link rel="mask-icon" href=".src/assets/favicon.ico" color="#000000">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
@@ -40,22 +41,25 @@
 <main>
   <section class="hero_image">
     <h1 class="platin visually-hidden">Plantin Moretus</h1>
-      <div>
-        <p class="title_p">Plantin</p>
-        <p>He Printed His Way to Power</p>
+      <div class="hero_image__title">
+        <div class="hero_image__plantin">
+          <p class="title_p">Plantin</p>
+          <p>He Printed His Way to Power</p>
+        </div>
+        <div class="hero_image__moretus">
+          <p>Did This Man Rewrite History?</p>
+          <p class="title_p">Moretus</p>
+        </div>
       </div>
-      <div>
-        <p>Did This Man Rewrite History?</p>
-        <p class="title_m">Moretus</p>
-      </div>
-    <img src="./src/assets/platin_c.svg" alt="Plantin Moretus Illustratiom" width="100%">
+    <!-- <img class="hero_image__img" src="./src/assets/platin_c.svg" alt="Plantin Moretus Illustratiom" width="100%"> -->
     <div class="scroll_down">
-      <div>
+      <div class="scroll_down__text">
         <p class="hero_scroll">SCROLL DOWN</p>
         <p class="hero_explore">EXPLORE HIS STORY</p>
       </div>
       <img src="./src/assets/scroll_arrow.svg" alt="scroll arrow">
     </div>
+    <img class="hero_image__img" src="./src/assets/platin_c.svg" alt="Plantin Moretus Illustratiom" width="100%">
   </section>
 </main>
     <script type="module" src="/src/main.js"></script>

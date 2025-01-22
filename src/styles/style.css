@@ -15,7 +15,7 @@
 }
 
 :root {
-    --font-title-xl: clamp(6.5125rem, 3rem + 3vw, 7.8125rem);
+    --font-title-xl: clamp(6.5125rem, 10rem + 3vw, 7.8125rem);
     --font-title-l: clamp(5rem, 2rem + 2vw, 6.25rem);
     --font-body-xl: clamp(1.0625rem, 1rem + 1vw, 2.5rem);
     --font-body-l: clamp(1rem, 0.9rem + 1vw, 1.875rem);
@@ -236,6 +236,103 @@ body {
     background-repeat: no-repeat;
     z-index: 2;
 } */
+
+.hero_image {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.hero_image__title{
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.hero_image__img{
+    grid-row: 1/5;
+    grid-column: 1;
+    align-self: end;
+}
+
+.scroll_down{
+    display: grid;
+    grid-row: 4;
+    grid-column: 1;
+    justify-content: center;
+    align-self: center;
+    z-index: 3;
+    gap: 0.5rem;
+    justify-items: center;
+    padding-bottom: 1rem;
+}
+
+.scroll_down__text {
+    display: grid;
+    justify-items: center;
+    padding-bottom: 1rem;
+}
+
+.hero_image__title {
+    text-align: center;
+    align-self: start;
+    padding-top: 1rem;
+    padding-bottom: 1.75rem;
+}
+
+.hero_scroll {
+    color: var(--secondary);
+    font-family: "Montserrat", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: var(--font-body-m);
+}
+
+.hero_explore{
+    color: var(--secondary);
+    font-family: "Grifo", serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-size: var(--font-body-xl);
+    padding-top: 0.5rem;
+}
+
+.hero_image__plantin p:first-of-type {
+    font-family: "Grifo", serif;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--secondary);
+    z-index: 1;
+    text-transform: uppercase;
+    font-size: var(--font-title-xl);
+}
+
+.hero_image__plantin p:nth-of-type(2) {
+    font-family: "Montserrat", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: var(--font-body-m);
+    color: var(--secondary);
+}
+
+.hero_image__moretus p:first-of-type {
+    font-family: "Montserrat", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: var(--font-body-m);
+    color: var(--secondary);
+}
+
+.hero_image__moretus p:nth-of-type(2) {
+    font-family: "Grifo", serif;
+    font-weight: 700;
+    font-style: italic;
+    font-size: var(--font-title-xl);
+    color: var(--secondary);
+    z-index: 1;
+    text-transform: uppercase;
+}
 
 @media (min-width: 992px) {
     .progress-bar-desktop {
