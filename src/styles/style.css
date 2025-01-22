@@ -1,4 +1,27 @@
+@font-face {
+    font-family: 'Grifo';
+    src: url('/src/fonts/GrifoTesteM-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Grifo';
+    src: url('/src/fonts/GrifoTesteM-BoldItalic.woff2') format('woff2');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+
 :root {
+    --font-title-xl: clamp(6.5125rem, 3rem + 3vw, 7.8125rem);
+    --font-title-l: clamp(5rem, 2rem + 2vw, 6.25rem);
+    --font-body-xl: clamp(1.0625rem, 1rem + 1vw, 2.5rem);
+    --font-body-l: clamp(1rem, 0.9rem + 1vw, 1.875rem);
+    --font-body-m: clamp(0.9375rem, 0.8rem + 1vw, 1.5625rem);
+    --font-body-s: clamp(0.875rem, 0.7rem + 1vw, 1.25rem);
+    
     --primary: #D50D33;
     --secondary: #F8F6D8;
     --third: #201609;
@@ -8,19 +31,22 @@ html,
 body {
     margin: 0;
     padding: 0;
-    cursor: none;
-}
+    box-sizing: border-box;
+    height: 100%;}
 
-a,
-p {
-    font-family: "Montserrat", serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
 }
 
 .site-header {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     width: 100%;
@@ -39,13 +65,23 @@ p {
     align-items: center;
     justify-content: space-between;
     padding: 1rem 2rem 1rem 2rem;
+    background-color: var(--primary);
+    border: none;
+    border-bottom: 1.25px solid #F8F6D8;
+    margin-bottom: 1rem;
+
 
 }
 
 .lang-toggle a {
+    font-family: "Montserrat", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
     color: inherit;
     text-decoration: none;
-    font-size: 1rem;
+    font-size: var(--font-body-l);
+    font-weight: 300;
     margin-left: 1rem;
     color: var(--secondary);
 }
@@ -53,7 +89,6 @@ p {
 /* ========== PROGRESS BAR (Desktop only) ========== */
 .progress-bar-desktop {
     display: none;
-    /* hidden by default for mobile */
 }
 
 .progress-bar-desktop ul {
@@ -61,7 +96,6 @@ p {
     display: flex;
     align-items: center;
     gap: 7.5rem;
-    /* space between dots; tweak as needed */
     position: relative;
 }
 
@@ -85,7 +119,6 @@ p {
 .progress-bar-desktop ul li {
     position: relative;
     z-index: 2;
-    /* above the line */
 }
 
 .progress-bar-desktop ul li a {
@@ -104,19 +137,16 @@ p {
     /* remove scaling if you like */
 }
 
-/* ========== MENU ROW ========== */
 .header-menu-row {
     text-align: center;
 }
 
-.menu-divider {
-    border: none;
-    border-top: 1px solid #F8F6D8;
-    margin-bottom: 1rem;
-}
-
 .menu-toggle {
-    font-size: 1rem;
+    font-family: "Montserrat", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: var(--font-body-s);
     padding: 0.75rem 1.5rem;
     background: none;
     color: var(--secondary);
@@ -125,8 +155,85 @@ p {
 
 }
 
+.hero_image {
+    display: grid;
+    flex-direction: column;
+    gap: 15rem;
+}
+
+.hero_text {
+    
+    display: grid;
+    font-family: "Grifo", serif;
+    font-weight: 700;
+    font-style: italic;
+    font-size: var(--font-title-l);
+    color: var(--secondary);
+    text-align: center;
+    z-index: 1;
+    text-transform: uppercase;
+    margin-top: 2.5rem;
+}
+
+.scroll_down {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    z-index: 3;
+    gap: 1rem;
+}
+
+.hero_text_p {
+    font-family: "Montserrat", serif;
+    text-transform: none;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: var(--font-body-m);
+    text-align: center;
+}
+
 body {
     background-color: var(--primary);
+    overflow-x: hidden;
+}
+
+
+.hero_scroll {
+    color: var(--secondary);
+    font-family: "Montserrat", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: var(--font-body-m);
+    text-align: center;
+}
+
+.hero_explore {
+    color: var(--secondary);
+    font-family: "Grifo", serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-size: var(--font-body-xl);
+    text-align: center;
+    padding-top: 0.5rem;
+}
+
+.hero_image::before {
+    content: "";
+    position: absolute;
+    top: 20rem;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 52vh;
+    background-image: url('/src/assets/platin_c.svg');
+    background-size:contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 2;
 }
 
 @media (min-width: 992px) {
