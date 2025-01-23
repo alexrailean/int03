@@ -1,3 +1,4 @@
+/* ========== Setup ========== */
 @font-face {
   font-family: "Grifo";
   src: url("/src/fonts/GrifoTesteM-Regular.woff2") format("woff2");
@@ -44,6 +45,8 @@ body {
   border: 0;
 }
 
+
+/* ========== Nav ========== */
 .site-header {
   position: sticky;
   top: 0;
@@ -83,7 +86,6 @@ body {
   color: var(--secondary);
 }
 
-/* ========== PROGRESS BAR (Desktop only) ========== */
 .progress-bar-desktop {
   display: none;
 }
@@ -155,6 +157,108 @@ body {
   background-color: var(--primary);
   overflow-x: hidden;
 }
+
+
+/* ========== Intro Section ========== */
+.intro {
+  background-color: var(--secondary);
+  padding: 2rem;
+}
+
+.intro_title {
+  margin: 0;
+  font-weight: bold;
+  color: #cc0000;
+}
+
+.intro_name {
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.intro_resized {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.intro_content {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.intro-title-line1,
+.intro-title-line2 {
+  display: block;
+  font-weight: bold;
+  color: #cc0000;
+}
+
+.intro_body {
+  line-height: 1.5;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.intro_visuals {
+  width: 100%;
+  max-width: 400px;
+}
+
+.display_red__cover {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.visuals-text {
+  font-size: 1rem;
+  color: #333;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+
+/* ========== Quote Section ========== */
+.chapter_one {
+  padding: 24px;
+}
+
+.chapter_one__quote {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.quote_start,
+.quote_end {
+   width: clamp(10%, 8vw, 80%);
+  height: auto; 
+}
+
+.quote_start {
+  position: absolute;
+  top: 0;
+  left: 3%;
+}
+
+.quote_end {
+  position: absolute;
+  bottom: 0;
+  right: 3%;
+}
+
+.chapter_one__text {
+  margin: 0 32px;
+  z-index: 2;
+}
+
+.chapter_one__info {
+  margin-left: 2rem;
+}
+
 
 /* ========== Drag Section ========== */
 
@@ -332,23 +436,69 @@ body {
     display: none;
   }
 
-  /* .titles_page {
-    font-size: 6.25rem;
+  .chapter_one {
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px;
   }
 
-  .chapter_style {
-    font-size: 1.37338rem;
+  .chapter_one__quote {
+    flex-basis: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 40px;
   }
 
-  .bodytext_style {
-    font-size: 1.25rem;
+  .quote_start {
+    position: absolute;
+    top: 0;
+    left: -3%;
   }
 
-  .quote_reusedstyle {
-    font-size: 1.875rem;
-  } */
+  .quote_end {
+    position: absolute;
+    bottom: 0;
+    right: 3%;
+  }
+
+  .chapter_one__text {
+    margin: 0;
+  }
+
+  .chapter_one__info {
+    flex-basis: 50%;
+    text-align: left;
+  }
 
   .progress-bar-desktop {
     display: block;
+  }
+
+  .intro {
+    padding: 4rem;
+  }
+
+  .intro_resized {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .intro_content {
+    text-align: left;
+    margin-right: 2rem;
+    max-width: 50%;
+  }
+
+  .intro_body {
+    max-width: 100%;
+  }
+
+  .intro_visuals {
+    max-width: 50%;
   }
 }
