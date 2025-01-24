@@ -619,7 +619,6 @@ body {
 }
 
 /* ========== Chapter Three ========== */
-
 .chapter_threeone__content {
   padding-top: 10rem;
   display: flex;
@@ -672,7 +671,7 @@ body {
   gap: 1.5rem;
 }
 
-/* ========== Chapter Three ========== */
+/* ========== Chapter Four ========== */
 .chapter_four {
   background-color: var(--secondary);
   padding-left: 2rem;
@@ -701,17 +700,19 @@ body {
 }
 
 .chapter_four__text {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    gap: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 1.75rem;
 }
 
 .chapter_four__img {
-    align-self: center;
-    width: 100%;
-    height: auto;
+  align-self: center;
+  width: 100%;
+  height: auto;
 }
+
+/* ========== Chapter Four ========== */
 
 
 /* ========== Reused Style ========== */
@@ -772,8 +773,8 @@ body {
 }
 
 .chapter_four_quotes {
-    display: flex;
-    flex-direction: column-reverse;
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 /* ========== Responsive CSS ========== */
@@ -957,12 +958,38 @@ body {
 
   .chapter_threeone__body {
     flex-direction: row;
+    position: relative;
+    z-index: 5;
+  }
+
+  .chapter_four {
+    margin-top: -2rem;
+    z-index: 9999;
+  }
+  
+  .chapter_four__img {
+    position: relative;
+    z-index: 9999;
+  }
+
+  .chapter_four__text__content {
+    margin-top: 2rem;
+  }
+
+  .chapter_four_name {
+    padding-bottom: -10rem;
   }
 
   .chapter_threeone__text {
     flex-direction: row;
   }
 
+  .chapter_four_name {
+    margin: 0;
+    text-align: left;
+    margin-bottom: 3.5rem;
+    margin-left: 2.2rem;
+  }
   .intro_content {
     padding-bottom: 15rem;
   }
@@ -971,15 +998,15 @@ body {
     display: flex;
     flex-direction: row-reverse;
     align-items: start;
-}
+  }
 
-.chapter_four_quotes {
+  .chapter_four_quotes {
     flex-direction: row-reverse;
-}
+  }
 
-.chapter_one__info {
+  .chapter_one__info {
     margin-right: 3rem;
-}
+  }
 }
 
 @media (min-width: 1153px) {
