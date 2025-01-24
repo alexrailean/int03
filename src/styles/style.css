@@ -24,6 +24,7 @@
   --red-ellipse-clamp: clamp(0.43763rem, 0.3965rem + 0.214vw, 0.625rem);
   --main-title-clamp: clamp(0.9375rem, 0.6875rem + 1.25vw, 1.5625rem);
   --main-title-body-clamp: clamp(5rem, 4.375rem + 3.125vw, 7.8125rem);
+  --main-title-outro-clamp: clamp(4rem, 4.075rem + 3.125vw, 7.8125rem);
 
   --primary: #d50d33;
   --secondary: #f8f6d8;
@@ -36,7 +37,6 @@ body {
   padding: 0;
   box-sizing: border-box;
   height: 100%;
-  /* overflow-x: hidden; */
 }
 
 .visually-hidden {
@@ -48,6 +48,11 @@ body {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 /* ========== Nav ========== */
@@ -811,16 +816,150 @@ body {
 }
 
 .chapter_six_quotes {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
+/* ========== Outro ========== */
+
+.outro {
+  background-color: var(--secondary);
+  background-image: url("/src/assets/plantainmoretus_bkg.png");
+  background-size: cover;
+  background-position: center;
+  color: var(--primary);
+}
+
+.outro__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 6rem;
+  padding-bottom: 4rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  gap: 1rem;
+}
+
+.outro_text {
+  margin-bottom: 3.5rem;
+}
+
+.outro_social {
+  display: flex;
+  gap: 2rem;
+}
+
+.visit-button {
+  display: inline-block;
+  background-color: var(--primary);
+  color: var(--secondary);
+  padding: 0.75rem 1.25rem;
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.2s;
+}
+
+.visit-button:hover {
+  transform: scale(1.1);
+}
+
+.outro_title {
+  font-size: var(--main-title-outro-clamp);
+  text-transform: uppercase;
+}
+
+/* ========== Footer ========== */
+
+.footer-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-section img {
+  margin-top: -2rem;
+  padding-bottom: 1rem;
+  max-width: 10%;
+  height: auto;
+  align-self: center;
+}
+
+.footer-container {
+  background-color: var(--primary);
+  color: var(--secondary);
+  padding: 4rem 2rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+
+.footer-heading {
+  margin-bottom: 4rem;
+  font-family: "Grifo", serif;
+  /* text-transform: uppercase; */
+  font-size: var(--main-title-outro-clamp);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 90%;
+}
+
+.email-label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.email-field {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.email-field input[type="email"] {
+  outline: none;
+  border: none;
+  border-bottom: 2px solid var(--secondary);
+  background-color: transparent;
+  color: var(--secondary);
+  padding: 0.25rem 0;
+  width: 100%;
+  font-family: "Montserrat", serif;
+  font-size: var(--brown-quote-clamp);
+  font-style: normal;
+  font-weight: 400;
+}
+
+.email-field input::placeholder {
+  color: var(--secondary);
+}
+
+.email-field button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: var(--secondary);
+  color: var(--primary);
+  cursor: pointer;
+}
+
+.email-field button:hover {
+  transform: scale(1.1);
+}
+
+.back-to-top:hover {
+  transform: scale(1.2);
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+}
 
 /* ========== Reused Style ========== */
 
 .titles_page {
   font-family: "Grifo", serif;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   font-size: var(--titles-page-font-size);
   font-style: normal;
   font-weight: 400;
@@ -1134,7 +1273,7 @@ body {
   }
 
   .chapter_six__img {
-     width: 100%;
+    width: 100%;
     max-width: 750px;
     height: auto;
   }
@@ -1151,7 +1290,6 @@ body {
     margin: 0;
     text-align: center;
     margin-bottom: 3.5rem;
-
   }
   .intro_content {
     padding-bottom: 15rem;
@@ -1164,14 +1302,27 @@ body {
   }
 
   .chapter_six {
-  padding-left: 5rem;
-  padding-right: 5rem;
-}
-
-.chapter_four {
     padding-left: 5rem;
     padding-right: 5rem;
-}
+  }
+
+  .chapter_four {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+  .outro__content {
+    padding-top: 15rem;
+    padding-bottom: 15rem;
+    margin-left: 7rem;
+    margin-right: 7rem;
+  }
+
+  .footer-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
 
 @media (min-width: 1153px) {
