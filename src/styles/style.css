@@ -16,7 +16,7 @@
 }
 
 :root {
-  --titles-page-font-size: clamp(5rem, 5vw, 6.25rem);
+  --titles-page-font-size: clamp(4rem, 5vw, 6.25rem);
   --chapter-style-font-size: clamp(1.00994rem, 1.2vw, 1.37338rem);
   --bodytext-style-font-size: clamp(0.875rem, 1.5vw, 1.25rem);
   --quote-reusedstyle-font-size: clamp(0.9375rem, 2vw, 1.875rem);
@@ -36,6 +36,7 @@ body {
   padding: 0;
   box-sizing: border-box;
   height: 100%;
+  /* overflow-x: hidden; */
 }
 
 .visually-hidden {
@@ -763,6 +764,57 @@ body {
 }
 
 /* ========== Chapter Six ========== */
+.chapter_six {
+  background-color: var(--secondary);
+  padding-left: 2rem;
+  padding-right: 2rem;
+  background-image: url("/src/assets/coronated_plantin_bkg.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.chapter_six_name {
+  padding-top: 3rem;
+  align-self: center;
+}
+
+.chapter_six_body,
+.chapter_six_name,
+.chapter_six_title {
+  color: var(--primary);
+}
+
+.chapter_six_title {
+  margin-bottom: 2rem;
+}
+
+.chapter_six_body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.chapter_six__text {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.chapter_six__img {
+  align-self: end;
+  width: 100%;
+  height: auto;
+}
+
+.chapter_six_quotes {
+    display: flex;
+    flex-direction: column;
+}
+
 
 /* ========== Reused Style ========== */
 
@@ -1053,6 +1105,10 @@ body {
     flex-direction: row-reverse;
   }
 
+  .chapter_six_quotes {
+    flex-direction: row-reverse;
+  }
+
   .chapter_one__info {
     margin-right: 3rem;
   }
@@ -1071,6 +1127,51 @@ body {
     height: auto;
     margin-top: 5rem;
   }
+
+  .chapter_six {
+    margin-top: -2rem;
+    z-index: 9999;
+  }
+
+  .chapter_six__img {
+     width: 100%;
+    max-width: 750px;
+    height: auto;
+  }
+
+  .chapter_six__text__content {
+    margin-top: 2rem;
+  }
+
+  .chapter_threeone__text {
+    flex-direction: row;
+  }
+
+  .chapter_six_name {
+    margin: 0;
+    text-align: center;
+    margin-bottom: 3.5rem;
+
+  }
+  .intro_content {
+    padding-bottom: 15rem;
+  }
+
+  .chapter_six__text {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+  }
+
+  .chapter_six {
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
+.chapter_four {
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
 }
 
 @media (min-width: 1153px) {
