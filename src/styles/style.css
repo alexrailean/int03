@@ -889,7 +889,7 @@ body {
   background-color: var(--primary);
   color: var(--secondary);
   padding: 4rem 2rem;
-  margin-left: 3rem;
+  margin-left: 0.5rem;
   margin-right: 3rem;
 }
 
@@ -897,7 +897,7 @@ body {
   margin-bottom: 4rem;
   font-family: "Grifo", serif;
   /* text-transform: uppercase; */
-  font-size: var(--main-title-outro-clamp);
+  font-size: var(--titles-page-font-size);
   font-style: normal;
   font-weight: 400;
   line-height: 90%;
