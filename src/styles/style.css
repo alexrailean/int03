@@ -628,7 +628,7 @@ body {
   background-image: url("/src/assets/cities_bkg.png");
   background-size: cover;
   background-position: center;
-  margin-bottom: -0.70rem;
+  margin-bottom: -0.7rem;
   padding-right: clamp(3rem, -1rem, 10rem);
   padding-left: clamp(2.5rem, -1rem, 10rem);
 }
@@ -641,6 +641,7 @@ body {
 
 .chapter_threeone__content img {
   width: 100%;
+  height: auto;
   min-width: 375px;
 }
 
@@ -670,6 +671,48 @@ body {
   flex-direction: column;
   gap: 1.5rem;
 }
+
+/* ========== Chapter Three ========== */
+.chapter_four {
+  background-color: var(--secondary);
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.chapter_four_name {
+  padding-top: 3rem;
+}
+
+.chapter_four_body,
+.chapter_four_name,
+.chapter_four_title {
+  color: var(--primary);
+}
+
+.chapter_four_title {
+  margin-bottom: 2rem;
+}
+
+.chapter_four_body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.chapter_four__text {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 3rem;
+}
+
+.chapter_four__img {
+    align-self: center;
+    width: 100%;
+    height: auto;
+}
+
 
 /* ========== Reused Style ========== */
 
@@ -726,6 +769,11 @@ body {
 .chapter_two__info {
   color: var(--secondary);
   margin-top: 3rem;
+}
+
+.chapter_four_quotes {
+    display: flex;
+    flex-direction: column-reverse;
 }
 
 /* ========== Responsive CSS ========== */
@@ -918,6 +966,20 @@ body {
   .intro_content {
     padding-bottom: 15rem;
   }
+
+  .chapter_four__text {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: start;
+}
+
+.chapter_four_quotes {
+    flex-direction: row-reverse;
+}
+
+.chapter_one__info {
+    margin-right: 3rem;
+}
 }
 
 @media (min-width: 1153px) {
@@ -942,8 +1004,7 @@ body {
   }
 
   .chapter_two__img svg {
-    max-width: 0;
-    min-width: 0;
+    max-width: none;
     height: auto;
   }
 
@@ -986,7 +1047,6 @@ body {
     grid-column: 1/3;
     align-self: flex-end;
     margin-bottom: -10rem;
-
   }
 
   .chapter_twoone_body {
