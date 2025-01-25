@@ -6,8 +6,6 @@ const chapters = document.querySelectorAll(
   "#intro, #chapter_onest, #chapter_two, #chapter_three, #chapter_four, #chapter_five, #chapter_six"
 );
 
-
-
 const highlightActiveDot = () => {
   chapters.forEach((chapter, index) => {
     const rect = chapter.getBoundingClientRect();
@@ -20,7 +18,6 @@ const highlightActiveDot = () => {
     }
   });
 };
-
 
 const toggleOverlayMenu = () => {
   const menuToggle = document.querySelector(".menu-toggle");
@@ -75,6 +72,8 @@ const initDragReveal = () => {
   const bodyText = document.getElementById("body-text");
   const contentContainer = document.querySelector(".content");
 
+  if (!container || !afterImage || !dragLine || !dragHandle || !bodyText) return;
+
   dragLine.style.left = "5%";
   afterImage.style.clipPath = "inset(0 95% 0 0)";
 
@@ -105,6 +104,7 @@ const initDragReveal = () => {
       (Math.max(0, Math.min(dragX, containerRect.width)) /
         containerRect.width) *
       100;
+
     dragLine.style.left = `${percentage}%`;
     afterImage.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
     updateContent(percentage);
@@ -117,9 +117,8 @@ const initDragReveal = () => {
   dragHandle.addEventListener("mousedown", handleDragStart);
   window.addEventListener("mousemove", handleDragMove);
   window.addEventListener("mouseup", handleDragEnd);
-  dragHandle.addEventListener("touchstart", handleDragStart, {
-    passive: false,
-  });
+
+  dragHandle.addEventListener("touchstart", handleDragStart, { passive: false });
   window.addEventListener("touchmove", handleDragMove, { passive: false });
   window.addEventListener("touchend", handleDragEnd);
 
@@ -133,13 +132,81 @@ const initDragReveal = () => {
   };
 };
 
+const initQuoteInteraction = () => {
+  const desktopQuote = document.querySelector(".intro_quote_self.desktop-only");
+  const mobileQuote = document.querySelector(".visuals-text.vis_hiddenphone");
+  if (!desktopQuote || !mobileQuote) return;
+
+  const typingDotsHTML = `
+    <div class="typing-dots">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  `;
+  
+  const firstMessage = "I’m gonna flip this entire system on its head";
+  const secondMessage = "Think you can guess how I did it? Stick around";
+
+  desktopQuote.innerHTML = typingDotsHTML;
+  mobileQuote.innerHTML = typingDotsHTML;
+
+  let hoverTimer = null;
+
+  const handleMouseEnter = (e) => {
+    e.target.innerHTML = firstMessage;
+    hoverTimer = setTimeout(() => {
+      e.target.innerHTML = secondMessage;
+    }, 1500);
+  };
+
+  const handleMouseLeave = (e) => {
+    e.target.innerHTML = typingDotsHTML;
+    if (hoverTimer) {
+      clearTimeout(hoverTimer);
+      hoverTimer = null;
+    }
+  };
+
+  desktopQuote.addEventListener("mouseenter", handleMouseEnter);
+  desktopQuote.addEventListener("mouseleave", handleMouseLeave);
+
+  mobileQuote.addEventListener("mouseenter", handleMouseEnter);
+  mobileQuote.addEventListener("mouseleave", handleMouseLeave);
+};
+
+const initHotspotTooltips = () => {
+  const hotspots = document.querySelectorAll(".hotspot");
+  if (!hotspots.length) return;
+  document.addEventListener("click", (e) => {
+    let clickedHotspot = null;
+    hotspots.forEach((hotspot) => {
+      if (hotspot.contains(e.target)) {
+        clickedHotspot = hotspot; 
+      } else {
+        hotspot.classList.remove("active");
+      }
+    });
+    if (clickedHotspot) {
+      clickedHotspot.classList.toggle("active");
+    }
+  });
+};
+
 const init = () => {
   const contentContainer = document.querySelector(".content");
-  contentContainer.classList.remove("active");
+  if (contentContainer) {
+    contentContainer.classList.remove("active");
+  }
+
   initProgressBar();
   toggleOverlayMenu();
   initFallback();
   initDragReveal();
+  initQuoteInteraction();
+  initHotspotTooltips();
 };
 
 document.addEventListener("DOMContentLoaded", init);
+
+

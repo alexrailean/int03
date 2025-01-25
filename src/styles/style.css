@@ -26,6 +26,7 @@
   --main-title-body-clamp: clamp(5rem, 4.375rem + 3.125vw, 7.8125rem);
   --main-title-outro-clamp: clamp(4rem, 4.075rem + 3.125vw, 7.8125rem);
   --menu-expanded-subsubtitle-clamp: clamp(1.812rem, 1.832rem + 3.125vw, 3.125rem);
+  --poorlybible-tooltips: clamp(0.36763rem, 0.5rem + 1vw, 0.625rem);
 
   --primary: #d50d33;
   --secondary: #f8f6d8;
@@ -452,7 +453,7 @@ body {
   text-align: center;
   margin-top: 0;
   margin-left: 2rem;
-  margin-right: 3rem;
+  margin-right: 5rem;
   /* position: absolute;
   bottom: 1rem;
   left: 15%; */
@@ -529,6 +530,46 @@ body {
   padding-bottom: 2rem;
   color: var(--secondary);
 }
+
+.typing-dots {
+  display: inline-block;
+  position: relative;
+  width: 2rem; 
+  height: 1rem; 
+  vertical-align:bottom;
+}
+
+.typing-dots span {
+  display: inline-block;
+  position: absolute;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: currentColor; 
+  animation: typingBounce 1.2s infinite ease-in-out both;
+}
+ 
+.typing-dots span:nth-child(1) {
+  left: 0;
+  animation-delay: -0.32s;
+}
+.typing-dots span:nth-child(2) {
+  left: 0.6rem;
+  animation-delay: -0.16s;
+}
+.typing-dots span:nth-child(3) {
+  left: 1.2rem;
+}
+
+@keyframes typingBounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
+
 
 /* ========== Drag Section ========== */
 
@@ -928,6 +969,112 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+.chapter_five {
+  position: relative;
+  background-color: var(--secondary);
+  background-image: url("/src/assets/bible_bkg.png");
+  background-size: cover;
+  background-position: center;
+  padding-top: 1rem;
+  z-index: 0; 
+}
+
+.chapter_five::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10rem;
+  background-color: var(--primary);
+  z-index: 1;
+}
+
+.bible-container {
+  position: relative; 
+  z-index: 2; 
+}
+
+.poly_bible {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 3; 
+}
+
+.hotspot {
+  position: absolute;
+  width: 1rem; 
+  height: 1rem;
+  cursor: pointer;
+  z-index: 4; 
+}
+
+.hotspot-icon {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: var(--primary);
+  border: 2px solid var(--third);
+  box-shadow: 0 0 0 2px var(--secondary) inset;
+}
+
+.tooltip {
+  position: absolute;
+  /* bottom: 110%;
+  left: -2rem;  */
+  width: 12rem;
+  background-color: var(--secondary);
+  color: var(--primary);
+  padding: 0.75rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  opacity: 0; 
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 999;
+  font-family: "Montserrat", serif;
+  font-size: var(--poorlybible-tooltips);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 145%;
+  z-index: 9999;
+}
+
+.tooltip2 {
+  margin-left: -12.5rem;
+}
+
+.hotspot.active .tooltip {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.hotspot1 {
+  top: 35%; 
+  left: 30%;
+}
+
+.hotspot2 {
+  top: 50%;
+  left: 67%;
+}
+
+.hotspot3 {
+  top: 70%;
+  left: 25%;
+}
+
+.hotspot:hover .tooltip {
+  display: block; 
+}
+
+.hotspot.active .tooltip {
+  display: block;
+}
+
 
 /* ========== Outro ========== */
 
