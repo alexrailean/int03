@@ -877,7 +877,7 @@ body {
   flex-direction: column;
 }
 
-.footer-section img {
+.footer-section a {
   margin-top: -2rem;
   padding-bottom: 1rem;
   max-width: 10%;
