@@ -424,7 +424,23 @@
       <section>
         <h1 class="intro_title visually-hidden">The Emperor Of Ink 2</h1>
         <div class="chapter_threeone__content">
-          <img src="src/assets/cities_facilties.png" alt="cites_facilities" />
+          <img
+            src="/src/assets/cities_facilties.png"
+            alt="cites_facilities"
+            srcset="
+              /src/assets/cities_facilties-375.avif   375w,
+              /src/assets/cities_facilties-750.avif   750w,
+              /src/assets/cities_facilties-1125.avif 1125w,
+              /src/assets/cities_facilties-1248.avif 1248w,
+              /src/assets/cities_facilties-1390.avif 1390w,
+              /src/assets/cities_facilties-1520.avif 1520w,
+              /src/assets/cities_facilties-1680.avif 1680w,
+              /src/assets/cities_facilties-1832.avif 1832w,
+              /src/assets/cities_facilties-1940.avif 1940w,
+              /src/assets/cities_facilties-2048.avif 2048w
+            "
+            sizes="(min-width: 500px) calc(100vw - 88px), calc(9.44vw + 347px)"
+          />
           <!-- <img src="/src/assets/facility_leiden.png" alt="">
           <img src="/src/assets/facility_leuven.png" alt="">
           <img src="/src/assets/facility_antwerp.png" alt="">
@@ -606,9 +622,14 @@
       </section>
     </main>
     <footer class="footer-section">
-      <img src="/src/assets/arrow_up.svg" alt="" />
+      <a href="/index.html"
+        ><img src="/src/assets/arrow_up.svg" alt="arror to the top"
+      /></a>
       <div class="footer-container">
-        <h2 class="footer-heading">THANKS FOR WATCHING</h2>
+        <h2 class="footer-heading">
+          THANKS <br />
+          FOR WATCHING
+        </h2>
         <div class="footer-content">
           <div class="footer-left">
             <label for="email" class="email-label bodytext_style">
@@ -621,7 +642,9 @@
                 name="email"
                 placeholder="Enter your email…"
               />
-              <button type="submit" class="visit-button bodytext_style">Subscribe</button>
+              <button type="submit" class="visit-button bodytext_style">
+                Subscribe
+              </button>
             </div>
           </div>
           <div class="footer-right">
