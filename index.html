@@ -470,6 +470,23 @@
       <section>
         <h1 class="intro_title visually-hidden">The Emperor Of Ink 2</h1>
         <div class="chapter_threeone__content">
+          <button class="carousel-arrow left-arrow" aria-label="Previous">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M15 18L9 12L15 6"
+                stroke="#C00"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
           <img
             src="/src/assets/cities_facilties.png"
             alt="cites_facilities"
@@ -486,16 +503,42 @@
               /src/assets/cities_facilties-2048.avif 2048w
             "
             sizes="(min-width: 500px) calc(100vw - 88px), calc(9.44vw + 347px)"
+            style="display: block"
           />
-          <!-- <img src="/src/assets/facility_leiden.png" alt="">
-          <img src="/src/assets/facility_leuven.png" alt="">
-          <img src="/src/assets/facility_antwerp.png" alt="">
-          <img src="/src/assets/facility_paris.png" alt="">
-          <img src="/src/assets/facility_frankfurt.png" alt=""> -->
+          <div class="cities_each">
+            <img src="/src/assets/facility_leiden.png" alt="Leiden Facility" />
+            <img src="/src/assets/facility_leuven.png" alt="Leuven Facility" />
+            <img
+              src="/src/assets/facility_antwerp.png"
+              alt="Antwerp Facility"
+            />
+            <img src="/src/assets/facility_paris.png" alt="Paris Facility" />
+            <img
+              src="/src/assets/facility_frankfurt.png"
+              alt="Frankfurt Facility"
+            />
+          </div>
+          <button class="carousel-arrow right-arrow" aria-label="Next">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9 6L15 12L9 18"
+                stroke="#C00"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
         </div>
         <div class="chapter_threeone__body">
-          <p class="titles_page">Printing Monopoly</p>
-          <div class="chapter_threeone__text">
+          <p class="titles_page" id="dynamic-title">Printing Monopoly</p>
+          <div class="chapter_threeone__text" id="dynamic-text">
             <p class="bodytext_style">
               In modern terms, he’s diversifying his income streams. But it all
               hinges on one big question: Can he keep this empire afloat when
@@ -586,7 +629,7 @@
             />
             <div class="hotspot hotspot1">
               <div class="hotspot-icon"></div>
-              <div class="tooltip  tooltip1">
+              <div class="tooltip tooltip1">
                 <p>
                   Plantin’s grand plan? The Polyglot Bible—eight volumes, five
                   languages, financed by King Philip II.
@@ -607,7 +650,7 @@
 
             <div class="hotspot hotspot3">
               <div class="hotspot-icon"></div>
-              <div class="tooltip   tooltip3">
+              <div class="tooltip tooltip3">
                 <p>
                   It’s not just a book—it’s a statement. Plantin’s back, and
                   he’s printing up a storm.
@@ -749,7 +792,8 @@
         </div>
       </div>
     </footer>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
