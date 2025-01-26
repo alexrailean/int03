@@ -7,6 +7,60 @@ const chapters = document.querySelectorAll(
   "#intro, #chapter_onest, #chapter_two, #chapter_three, #chapter_four, #chapter_five, #chapter_six"
 );
 
+const initHeroAnimations = () => {
+  const heroTimeline = gsap.timeline();
+  heroTimeline.from(".hero_image__plantin", {
+    x: -200,
+    opacity: 0,
+    duration: 1,
+    ease: "power2.out",
+  });
+
+  heroTimeline.from(
+    ".hero_image__moretus",
+    {
+      x: 200,
+      opacity: 0,
+      duration: 1,
+      ease: "power2.out",
+    },
+    "-=0.8"
+  );
+
+  heroTimeline.from(
+    ".scroll_down img",
+    {
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      ease: "power2.out",
+    },
+    "-=0.5"
+  );
+
+  heroTimeline.from(
+    ".scroll_down__text",
+    {
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      ease: "power2.out",
+    },
+    "-=0.5"
+  );
+
+  heroTimeline.from(
+    ".hero_image__img",
+    {
+      y: 100,
+      opacity: 0,
+      duration: 1.2,
+      ease: "power2.out",
+    },
+    "-=1"
+  );
+};
+
 const highlightActiveDot = () => {
   chapters.forEach((chapter, index) => {
     const rect = chapter.getBoundingClientRect();
@@ -37,7 +91,7 @@ const toggleOverlayMenu = () => {
     link.addEventListener("click", (e) => {
       e.preventDefault();
       chapters[index].scrollIntoView({ behavior: "smooth" });
-      overlay.style.display = "none"; 
+      overlay.style.display = "none";
       menuToggle.textContent = "MENU";
     });
   });
@@ -151,7 +205,8 @@ const initDragReveal = () => {
   const bodyText = document.getElementById("body-text");
   const contentContainer = document.querySelector(".content");
 
-  if (!container || !afterImage || !dragLine || !dragHandle || !bodyText) return;
+  if (!container || !afterImage || !dragLine || !dragHandle || !bodyText)
+    return;
 
   dragLine.style.left = "5%";
   afterImage.style.clipPath = "inset(0 95% 0 0)";
@@ -197,7 +252,9 @@ const initDragReveal = () => {
   window.addEventListener("mousemove", handleDragMove);
   window.addEventListener("mouseup", handleDragEnd);
 
-  dragHandle.addEventListener("touchstart", handleDragStart, { passive: false });
+  dragHandle.addEventListener("touchstart", handleDragStart, {
+    passive: false,
+  });
   window.addEventListener("touchmove", handleDragMove, { passive: false });
   window.addEventListener("touchend", handleDragEnd);
 
@@ -223,7 +280,7 @@ const initQuoteInteraction = () => {
       <span></span>
     </div>
   `;
-  
+
   const firstMessage = "I’m gonna flip this entire system on its head";
   const secondMessage = "Think you can guess how I did it? Stick around";
 
@@ -261,7 +318,7 @@ const initHotspotTooltips = () => {
     let clickedHotspot = null;
     hotspots.forEach((hotspot) => {
       if (hotspot.contains(e.target)) {
-        clickedHotspot = hotspot; 
+        clickedHotspot = hotspot;
       } else {
         hotspot.classList.remove("active");
       }
@@ -271,6 +328,59 @@ const initHotspotTooltips = () => {
     }
   });
 };
+
+const initEyeFollow = () => {
+  const isTouchDevice =
+    "ontouchstart" in window || navigator.maxTouchPoints > 0;
+
+  if (isTouchDevice) {
+    gsap.set("#left-eye, #right-eye", { x: 0, y: 0 });
+    return;
+  }
+
+  const leftEye = document.getElementById("left-eye");
+  const rightEye = document.getElementById("right-eye");
+
+  let maxMove = window.innerWidth < 768 ? 3 : 6;
+
+  window.addEventListener("resize", () => {
+    maxMove = window.innerWidth < 768 ? 3 : 6;
+  });
+
+  const moveEyes = (event) => {
+    const { clientX, clientY } = event;
+
+    [leftEye, rightEye].forEach((eye) => {
+      const rect = eye.getBoundingClientRect();
+
+      const eyeCenterX = rect.left + rect.width / 2;
+      const eyeCenterY = rect.top + rect.height / 2;
+      const angle = Math.atan2(clientY - eyeCenterY, clientX - eyeCenterX);
+      const deltaX = Math.cos(angle) * maxMove;
+      const deltaY = Math.sin(angle) * maxMove;
+
+      gsap.to(eye, {
+        x: deltaX,
+        y: deltaY,
+        duration: 0.3,
+        ease: "power2.out",
+      });
+    });
+  };
+
+  window.addEventListener("mousemove", moveEyes);
+  window.addEventListener("beforeunload", () => {
+    window.removeEventListener("mousemove", moveEyes);
+  });
+};
+
+if (typeof gsap !== "undefined") {
+  document.addEventListener("DOMContentLoaded", initEyeFollow);
+} else {
+  console.error(
+    "GSAP is not loaded. Please ensure GSAP scripts are included before main.js."
+  );
+}
 
 const init = () => {
   const contentContainer = document.querySelector(".content");
@@ -285,8 +395,8 @@ const init = () => {
   initQuoteInteraction();
   initHotspotTooltips();
   initCarousel();
+  initHeroAnimations();
+  initEyeFollow();
 };
 
 document.addEventListener("DOMContentLoaded", init);
-
-
