@@ -456,8 +456,8 @@ body {
   background-color: var(--third);
   text-align: center;
   margin-top: 0;
-  margin-left: 2rem;
-  margin-right: 5rem;
+  /* margin-left: 2rem;*/
+  margin-right: 2rem; 
   /* position: absolute;
   bottom: 1rem;
   left: 15%; */
@@ -568,6 +568,12 @@ body {
 }
 .typing-dots span:nth-child(3) {
   left: 1.2rem;
+}
+
+
+.intro_quote_self.desktop-only,
+.visuals-text.vis_hiddenphone {
+  overflow: hidden;
 }
 
 @keyframes typingBounce {
