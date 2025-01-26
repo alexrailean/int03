@@ -289,8 +289,9 @@ body {
 }
 
 .hero_image__img {
-  width: 20%;
-  min-width: 350px;
+  width: 90%;
+  height: auto;
+  max-width: 90%;
   margin: 0 auto;
 }
 
@@ -1543,10 +1544,11 @@ body {
   }
 
   .hero_image__img {
-    width: 70%;
-    max-width: 600px;
-    margin: 0 auto;
-  }
+  width: 42.5%;
+  height: auto;
+  max-width: 42.5%;
+  margin: 0 auto;
+}
 
   .hero_image__plantin p:nth-of-type(2) {
     margin-bottom: -1rem;
@@ -1782,3 +1784,5 @@ body {
     margin-bottom: -2.5rem;
   }
 }
+
+
