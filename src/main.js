@@ -55,6 +55,84 @@ const initProgressBar = () => {
   }
 };
 
+const initCarousel = () => {
+  const carousel = document.querySelector(".chapter_threeone__content");
+  const images = carousel.querySelectorAll("img");
+  const leftArrow = document.querySelector(".left-arrow");
+  const rightArrow = document.querySelector(".right-arrow");
+  const titleElement = document.getElementById("dynamic-title");
+  const textElement = document.getElementById("dynamic-text");
+
+  const slidesContent = [
+    {
+      title: "Printing Monopoly",
+      texts: [
+        "In modern terms, he’s diversifying his income streams. But it all hinges on one big question: Can he keep this empire afloat when the world around him is about to explode?",
+        "But here’s the real power move: Plantin doesn’t stop at Antwerp. He expands. Multiple facilities across Europe, each focused on different genres—religious works, scientific treatises, you name it.",
+      ],
+    },
+    {
+      title: "Leiden Facility",
+      texts: [
+        "Over in the Netherlands, Plantin hooks up with the scholarly crowd at the newly founded university.",
+        "Academic works? Check. Protestant materials? Double-check. It’s like a cerebral playground for Plantin’s expanding repertoire.",
+      ],
+    },
+    {
+      title: "Leuven Facility",
+      texts: [
+        "A quieter outpost compared to Antwerp, but still part of the grand plan. ",
+        "Think of Leuven as the warm-up gig where Plantin tested the waters before his Antwerp-based main act stole the show.",
+      ],
+    },
+    {
+      title: "Antwerp Facility",
+      texts: [
+        "This is ground zero for Plantin’s print empire. Think of it as the bustling HQ where religious tomes, scientific treatises, and everything in between rolled off the presses. ",
+        "If his operation’s a heart, Antwerp’s the beat that keeps the whole thing alive.",
+      ],
+    },
+    {
+      title: "Paris Facility",
+      texts: [
+        "Then there’s Paris, the cultural hotspot. Printing in the City of Light means tapping into the French-speaking market.",
+        "There, he mixes cutting-edge ideas with timeless classics, all under the gaze of Europe’s literary elite. With his family by his side,he marched toward a printing empire.",
+      ],
+    },
+    {
+      title: "Frankfurt Facility",
+      texts: [
+        "Frankfurt is all about trade. Home to the legendary Frankfurt Book Fair. Plantin’s presence here is all about distribution",
+        "getting those shiny new publications straight into the hands of traders, scholars, and book-hungry travelers from across the continent.",
+      ],
+    },
+  ];
+
+  let currentIndex = 0;
+
+  const updateSlide = () => {
+    images.forEach((img, index) => {
+      img.style.display = index === currentIndex ? "block" : "none";
+    });
+    titleElement.textContent = slidesContent[currentIndex].title;
+    textElement.innerHTML = slidesContent[currentIndex].texts
+      .map((text) => `<p class='bodytext_style'>${text}</p>`)
+      .join("");
+  };
+
+  leftArrow.addEventListener("click", () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    updateSlide();
+  });
+
+  rightArrow.addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    updateSlide();
+  });
+
+  updateSlide();
+};
+
 const initFallback = () => {
   if (typeof window === "undefined" || !window.document) {
     document.querySelector(".header-menu-row").style.display = "none";
@@ -205,6 +283,7 @@ const init = () => {
   initDragReveal();
   initQuoteInteraction();
   initHotspotTooltips();
+  initCarousel();
 };
 
 document.addEventListener("DOMContentLoaded", init);

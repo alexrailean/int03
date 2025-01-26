@@ -25,7 +25,11 @@
   --main-title-clamp: clamp(0.9375rem, 0.6875rem + 1.25vw, 1.5625rem);
   --main-title-body-clamp: clamp(5rem, 4.375rem + 3.125vw, 7.8125rem);
   --main-title-outro-clamp: clamp(4rem, 4.075rem + 3.125vw, 7.8125rem);
-  --menu-expanded-subsubtitle-clamp: clamp(1.812rem, 1.832rem + 3.125vw, 3.125rem);
+  --menu-expanded-subsubtitle-clamp: clamp(
+    1.812rem,
+    1.832rem + 3.125vw,
+    3.125rem
+  );
   --poorlybible-tooltips: clamp(0.36763rem, 0.5rem + 1vw, 0.625rem);
 
   --primary: #d50d33;
@@ -254,7 +258,7 @@ body {
 
 .overlay-progress-bar .subtitle {
   display: block;
-  color: #D9D9D9;
+  color: #d9d9d9;
 }
 
 .overlay-progress-bar .subsubtitle {
@@ -269,13 +273,12 @@ body {
 
 .overlay-progress-bar .subsubtitle {
   text-decoration-line: none;
-  transition: text-decoration 0.3s ease-in-out; 
+  transition: text-decoration 0.3s ease-in-out;
 }
 
 .overlay-progress-bar .subsubtitle:hover {
-  text-decoration-line: line-through; 
+  text-decoration-line: line-through;
 }
-
 
 /* ========== Hero Image ========== */
 .hero_image {
@@ -482,7 +485,7 @@ body {
 }
 
 .desktop-only {
-  display: none; 
+  display: none;
 }
 
 /* ========== Quote Section ========== */
@@ -534,9 +537,9 @@ body {
 .typing-dots {
   display: inline-block;
   position: relative;
-  width: 2rem; 
-  height: 1rem; 
-  vertical-align:bottom;
+  width: 2rem;
+  height: 1rem;
+  vertical-align: bottom;
 }
 
 .typing-dots span {
@@ -545,10 +548,10 @@ body {
   width: 0.4rem;
   height: 0.4rem;
   border-radius: 50%;
-  background: currentColor; 
+  background: currentColor;
   animation: typingBounce 1.2s infinite ease-in-out both;
 }
- 
+
 .typing-dots span:nth-child(1) {
   left: 0;
   animation-delay: -0.32s;
@@ -562,14 +565,15 @@ body {
 }
 
 @keyframes typingBounce {
-  0%, 80%, 100% {
+  0%,
+  80%,
+  100% {
     transform: scale(0);
   }
   40% {
     transform: scale(1);
   }
 }
-
 
 /* ========== Drag Section ========== */
 
@@ -775,18 +779,27 @@ body {
   right: -5%;
 }
 
+.cities_each {
+  max-width: 100%;
+  height: auto;
+}
+
 /* ========== Chapter Three ========== */
 .chapter_threeone__content {
   padding-top: 10rem;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   background-image: url("/src/assets/cities_bkg.png");
   background-size: cover;
   background-position: center;
-  margin-bottom: -0.7rem;
-  padding-right: clamp(3rem, -1rem, 10rem);
-  padding-left: clamp(2.5rem, -1rem, 10rem);
+  margin-bottom: -0.4rem;
+  /* padding-right: clamp(3rem, -1rem, 10rem);
+  padding-left: clamp(2.5rem, -1rem, 10rem); */
+}
+
+.cities_each img {
+  margin-bottom: -0.75rem;
 }
 
 /* .chapter_threeone__content img:nth-last-child(-n+4) {
@@ -805,6 +818,7 @@ body {
   color: var(--secondary);
   background-color: var(--primary);
 }
+
 /* 
 .chapter_threeone__content img:nth-child(1) { z-index: 5 }
 .chapter_threeone__content img:nth-child(2) { z-index: 3 }
@@ -826,6 +840,30 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.carousel-arrow {
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.left-arrow {
+  left: 10px;
+}
+
+.right-arrow {
+  right: 10px;
+}
+
+.carousel-arrow svg {
+  width: 36px;
+  height: 36px;
+  fill: none;
+  stroke: var(--primary);
+  stroke-width: 2;
 }
 
 /* ========== Chapter Four ========== */
@@ -977,7 +1015,7 @@ body {
   background-size: cover;
   background-position: center;
   padding-top: 1rem;
-  z-index: 0; 
+  z-index: 0;
 }
 
 .chapter_five::after {
@@ -992,8 +1030,8 @@ body {
 }
 
 .bible-container {
-  position: relative; 
-  z-index: 2; 
+  position: relative;
+  z-index: 2;
 }
 
 .poly_bible {
@@ -1001,15 +1039,15 @@ body {
   width: 100%;
   height: auto;
   position: relative;
-  z-index: 3; 
+  z-index: 3;
 }
 
 .hotspot {
   position: absolute;
-  width: 1rem; 
+  width: 1rem;
   height: 1rem;
   cursor: pointer;
-  z-index: 4; 
+  z-index: 4;
 }
 
 .hotspot-icon {
@@ -1030,8 +1068,8 @@ body {
   color: var(--primary);
   padding: 0.75rem;
   border-radius: 4px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  opacity: 0; 
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease-in-out;
   z-index: 999;
@@ -1053,7 +1091,7 @@ body {
 }
 
 .hotspot1 {
-  top: 35%; 
+  top: 35%;
   left: 30%;
 }
 
@@ -1068,13 +1106,12 @@ body {
 }
 
 .hotspot:hover .tooltip {
-  display: block; 
+  display: block;
 }
 
 .hotspot.active .tooltip {
   display: block;
 }
-
 
 /* ========== Outro ========== */
 
@@ -1273,63 +1310,80 @@ body {
 }
 
 /* ========== Responsive CSS ========== */
-@media (max-width: 768px) { 
+@media (max-width: 768px) {
+
+  .chapter_threeone__content img {
+  min-width: 275px;
+}
+
   .hotspot {
-  position: absolute;
-  width: 3rem; 
-  height: 3rem;
-  cursor: pointer;
-  z-index: 4;
-}
+    position: absolute;
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+    z-index: 4;
+  }
 
-.hotspot-icon {
-  position: absolute;
-  top: 50%; 
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 1rem;
-  height: 1rem;
-  border-radius: 50%;
-  background-color: var(--primary);
-  border: 2px solid var(--third);
-  box-shadow: 0 0 0 2px var(--secondary) inset;
-}
+  .hotspot-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background-color: var(--primary);
+    border: 2px solid var(--third);
+    box-shadow: 0 0 0 2px var(--secondary) inset;
+  }
 
-.tooltip1 {
-  margin-left: 2.25rem;
-  margin-top: 0.9rem;
-}
+  .tooltip1 {
+    margin-left: 2.25rem;
+    margin-top: 0.9rem;
+  }
 
-.tooltip2 {
-  margin-left: -13rem;
-  margin-top: 0.9rem;
-}
+  .tooltip2 {
+    margin-left: -13rem;
+    margin-top: 0.9rem;
+  }
 
-.tooltip3 {
-  margin-left: 2.25rem;
-  margin-top: 0.9rem;
-}
+  .tooltip3 {
+    margin-left: 2.25rem;
+    margin-top: 0.9rem;
+  }
 
-.visuals-text.vis_hiddenphone {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-}
+  .visuals-text.vis_hiddenphone {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
 
-.visuals-text.vis_hiddenphone::before {
-  content: "";
-  position: absolute;
-  top: -0.5rem;  
-  left: -1rem;    
-  width: calc(100% + 2rem); 
-  height: calc(100% + 1rem); 
-  background: transparent;  
-  pointer-events: none;  
-}
+  .visuals-text.vis_hiddenphone::before {
+    content: "";
+    position: absolute;
+    top: -0.5rem;
+    left: -1rem;
+    width: calc(100% + 2rem);
+    height: calc(100% + 1rem);
+    background: transparent;
+    pointer-events: none;
+  }
 
+  .cities_each {
+    margin-bottom: -1rem;
+  }
 }
 
 @media (min-width: 768px) {
+
+  .cities_each img {
+  min-width: 100px;
+}
+
+  .chapter_threeone__text {
+    margin-top: 2rem;
+  }
+
   .intro_quote_self {
     color: var(--secondary);
     background-color: var(--third);
@@ -1520,6 +1574,7 @@ body {
   .chapter_four__img {
     position: relative;
     z-index: 199;
+    align-self: end;
   }
 
   .chapter_four__text__content {
@@ -1724,6 +1779,6 @@ body {
     padding-bottom: 5rem; */
   }
   .chapter_threeone__content {
-    margin-bottom: -2rem;
+    margin-bottom: -2.5rem;
   }
 }
