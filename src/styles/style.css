@@ -1333,7 +1333,11 @@ body {
 @media (max-width: 768px) {
 
   .chapter_threeone__content img {
-  min-width: 275px;
+  min-width: 300px;
+}
+
+.cities_each  img {
+  min-width: 20px;
 }
 
   .hotspot {
