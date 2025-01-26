@@ -7,6 +7,45 @@ const chapters = document.querySelectorAll(
   "#intro, #chapter_onest, #chapter_two, #chapter_three, #chapter_four, #chapter_five, #chapter_six"
 );
 
+const animateTrimPaths = () => {
+  gsap.utils.toArray(".trim-path").forEach((path) => {
+    const length = path.getTotalLength();
+    gsap.set(path, {
+      strokeDasharray: length,
+      strokeDashoffset: length,
+      opacity: 1,
+    });
+
+    gsap.to(path, {
+      strokeDashoffset: 0,
+      duration: 3,
+      ease: "none",
+      scrollTrigger: {
+        trigger: path,
+        start: "top 80%",
+        end: "top 30%",
+        scrub: true,
+      },
+    });
+  });
+};
+
+const animateSlideInOnScroll = () => {
+  gsap.utils.toArray(".animate-slide-in").forEach((element) => {
+    gsap.from(element, {
+      scrollTrigger: {
+        trigger: element,
+        start: "top 80%",
+        toggleActions: "play none none none",
+      },
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      ease: "power2.out",
+    });
+  });
+};
+
 const wrapLetters = (text) => {
   return text
     .split("")
@@ -319,8 +358,8 @@ const quoteInteraction = () => {
 
     typingTimeline.to(letters, {
       opacity: 1,
-      duration: 0.05, 
-      stagger: 0.05, 
+      duration: 0.05,
+      stagger: 0.05,
       ease: "none",
     });
 
@@ -340,7 +379,6 @@ const quoteInteraction = () => {
     }
     element.innerHTML = typingDotsHTML;
   };
-
 
   const handleMouseEnter = (e) => {
     const target = e.currentTarget;
@@ -455,6 +493,8 @@ const init = () => {
   carousel();
   heroAnimations();
   eyeFollow();
+  animateSlideInOnScroll();
+  animateTrimPaths();
 };
 
 init();
