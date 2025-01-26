@@ -711,6 +711,14 @@ body {
   height: auto;
 }
 
+.trim-path {
+  stroke-dasharray: 1000; 
+  stroke-dashoffset: 1000; 
+  opacity: 0;
+  transition: opacity 0.3s ease-out; 
+}
+
+
 /* ========== Chapter Two One ========== */
 .chapter_two_one {
   background-color: var(--secondary);
