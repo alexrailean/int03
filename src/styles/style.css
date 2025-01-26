@@ -241,9 +241,9 @@ body {
   margin-top: 0;
 }
 
-.close-btn svg path {
+/* .close-btn svg path {
   stroke: #d50d33;
-}
+} */
 
 .overlay-progress-bar li {
   margin: 20px 0;
@@ -487,6 +487,11 @@ body {
 
 .desktop-only {
   display: none;
+}
+
+.letter {
+  opacity: 0;
+  transition: opacity 0.05s ease-in;
 }
 
 /* ========== Quote Section ========== */
