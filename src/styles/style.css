@@ -45,6 +45,7 @@ body {
   height: 100%;
 }
 
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -1451,7 +1452,7 @@ body {
   .chapter_one {
     display: flex;
     align-items: center;
-    max-width: 1200px;
+    max-width: 1325px;
     margin: 0 auto;
     padding: 40px;
     margin-top: 2rem;
@@ -1797,5 +1798,8 @@ body {
     margin-bottom: -2.5rem;
   }
 }
+
+
+
 
 
