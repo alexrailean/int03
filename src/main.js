@@ -1,5 +1,6 @@
 import "./styles/reset.css";
 import "./styles/style.css";
+gsap.registerPlugin(MotionPathPlugin, ScrollTrigger);
 
 const progressBarLinks = document.querySelectorAll(".progress-bar-desktop a");
 const chapters = document.querySelectorAll(
