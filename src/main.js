@@ -7,7 +7,17 @@ const chapters = document.querySelectorAll(
   "#intro, #chapter_onest, #chapter_two, #chapter_three, #chapter_four, #chapter_five, #chapter_six"
 );
 
-const initHeroAnimations = () => {
+const wrapLetters = (text) => {
+  return text
+    .split("")
+    .map((char) => {
+      if (char === " ") return `<span class="letter">&nbsp;</span>`;
+      return `<span class="letter">${char}</span>`;
+    })
+    .join("");
+};
+
+const heroAnimations = () => {
   const heroTimeline = gsap.timeline();
   heroTimeline.from(".hero_image__plantin", {
     x: -200,
@@ -97,7 +107,7 @@ const toggleOverlayMenu = () => {
   });
 };
 
-const initProgressBar = () => {
+const progressBar = () => {
   if (progressBarLinks.length > 0 && chapters.length > 0) {
     progressBarLinks.forEach((link, index) => {
       link.addEventListener("click", (e) => {
@@ -110,7 +120,7 @@ const initProgressBar = () => {
   }
 };
 
-const initCarousel = () => {
+const carousel = () => {
   const carousel = document.querySelector(".chapter_threeone__content");
   const images = carousel.querySelectorAll("img");
   const leftArrow = document.querySelector(".left-arrow");
@@ -188,7 +198,7 @@ const initCarousel = () => {
   updateSlide();
 };
 
-const initFallback = () => {
+const fallback = () => {
   if (typeof window === "undefined" || !window.document) {
     document.querySelector(".header-menu-row").style.display = "none";
     progressBarLinks.forEach((link, index) => {
@@ -197,7 +207,7 @@ const initFallback = () => {
   }
 };
 
-const initDragReveal = () => {
+const dragReveal = () => {
   const container = document.querySelector(".image-container");
   const afterImage = document.querySelector(".after");
   const dragLine = document.querySelector(".drag-line");
@@ -268,9 +278,10 @@ const initDragReveal = () => {
   };
 };
 
-const initQuoteInteraction = () => {
+const quoteInteraction = () => {
   const desktopQuote = document.querySelector(".intro_quote_self.desktop-only");
   const mobileQuote = document.querySelector(".visuals-text.vis_hiddenphone");
+
   if (!desktopQuote || !mobileQuote) return;
 
   const typingDotsHTML = `
@@ -287,31 +298,78 @@ const initQuoteInteraction = () => {
   desktopQuote.innerHTML = typingDotsHTML;
   mobileQuote.innerHTML = typingDotsHTML;
 
-  let hoverTimer = null;
+  let typingTimeline = null;
+
+  const typeText = (element, message, onComplete) => {
+    if (typingTimeline) {
+      typingTimeline.kill();
+      typingTimeline = null;
+    }
+
+    element.innerHTML = wrapLetters(message) + `<span class="cursor">|</span>`;
+
+    const letters = element.querySelectorAll(".letter");
+    const cursor = element.querySelector(".cursor");
+
+    gsap.set(letters, { opacity: 0 });
+
+    typingTimeline = gsap.timeline({
+      onComplete: onComplete,
+    });
+
+    typingTimeline.to(letters, {
+      opacity: 1,
+      duration: 0.05, 
+      stagger: 0.05, 
+      ease: "none",
+    });
+
+    gsap.to(cursor, {
+      opacity: 0,
+      duration: 0.5,
+      repeat: -1,
+      yoyo: true,
+      ease: "none",
+    });
+  };
+
+  const resetTyping = (element) => {
+    if (typingTimeline) {
+      typingTimeline.kill();
+      typingTimeline = null;
+    }
+    element.innerHTML = typingDotsHTML;
+  };
+
 
   const handleMouseEnter = (e) => {
-    e.target.innerHTML = firstMessage;
-    hoverTimer = setTimeout(() => {
-      e.target.innerHTML = secondMessage;
-    }, 1500);
+    const target = e.currentTarget;
+
+    typeText(target, firstMessage, () => {
+      typeText(target, secondMessage);
+    });
   };
 
   const handleMouseLeave = (e) => {
-    e.target.innerHTML = typingDotsHTML;
-    if (hoverTimer) {
-      clearTimeout(hoverTimer);
-      hoverTimer = null;
-    }
+    const target = e.currentTarget;
+    resetTyping(target);
+  };
+
+  const handleClick = (e) => {
+    const target = e.currentTarget;
+    if (typingTimeline) return;
+
+    typeText(target, firstMessage, () => {
+      typeText(target, secondMessage);
+    });
   };
 
   desktopQuote.addEventListener("mouseenter", handleMouseEnter);
   desktopQuote.addEventListener("mouseleave", handleMouseLeave);
-
-  mobileQuote.addEventListener("mouseenter", handleMouseEnter);
-  mobileQuote.addEventListener("mouseleave", handleMouseLeave);
+  mobileQuote.addEventListener("click", handleClick);
 };
 
-const initHotspotTooltips = () => {
+const hotspotTooltips = () => {
   const hotspots = document.querySelectorAll(".hotspot");
   if (!hotspots.length) return;
   document.addEventListener("click", (e) => {
@@ -329,7 +387,7 @@ const initHotspotTooltips = () => {
   });
 };
 
-const initEyeFollow = () => {
+const eyeFollow = () => {
   const isTouchDevice =
     "ontouchstart" in window || navigator.maxTouchPoints > 0;
 
@@ -375,7 +433,7 @@ const initEyeFollow = () => {
 };
 
 if (typeof gsap !== "undefined") {
-  document.addEventListener("DOMContentLoaded", initEyeFollow);
+  document.addEventListener("DOMContentLoaded", eyeFollow);
 } else {
   console.error(
     "GSAP is not loaded. Please ensure GSAP scripts are included before main.js."
@@ -388,15 +446,15 @@ const init = () => {
     contentContainer.classList.remove("active");
   }
 
-  initProgressBar();
+  progressBar();
   toggleOverlayMenu();
-  initFallback();
-  initDragReveal();
-  initQuoteInteraction();
-  initHotspotTooltips();
-  initCarousel();
-  initHeroAnimations();
-  initEyeFollow();
+  fallback();
+  dragReveal();
+  quoteInteraction();
+  hotspotTooltips();
+  carousel();
+  heroAnimations();
+  eyeFollow();
 };
 
-document.addEventListener("DOMContentLoaded", init);
+init();
